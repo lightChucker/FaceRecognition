@@ -59,19 +59,20 @@ if not exist "%MODELS_DIR%" (
 :: Download model files if they don't exist
 if not exist "%MODELS_DIR%\shape_predictor_68_face_landmarks.dat" (
     echo Downloading shape predictor model...
-    powershell -Command "& {Invoke-WebRequest -Uri 'http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2' -OutFile '%MODELS_DIR%\shape_predictor_68_face_landmarks.dat.bz2'}"
+    curl -L "http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2" -o "%MODELS_DIR%\shape_predictor_68_face_landmarks.dat.bz2"
     echo Extracting shape predictor model...
-    python -c "import bz2; open('%MODELS_DIR%\shape_predictor_68_face_landmarks.dat', 'wb').write(bz2.open('%MODELS_DIR%\shape_predictor_68_face_landmarks.dat.bz2').read())"
+    python -c "import bz2; open(r'%MODELS_DIR%\shape_predictor_68_face_landmarks.dat', 'wb').write(bz2.open(r'%MODELS_DIR%\shape_predictor_68_face_landmarks.dat.bz2').read())"
     del "%MODELS_DIR%\shape_predictor_68_face_landmarks.dat.bz2"
 )
 
 if not exist "%MODELS_DIR%\dlib_face_recognition_resnet_model_v1.dat" (
     echo Downloading face recognition model...
-    powershell -Command "& {Invoke-WebRequest -Uri 'http://dlib.net/files/dlib_face_recognition_resnet_model_v1.dat.bz2' -OutFile '%MODELS_DIR%\dlib_face_recognition_resnet_model_v1.dat.bz2'}"
+    curl -L "http://dlib.net/files/dlib_face_recognition_resnet_model_v1.dat.bz2" -o "%MODELS_DIR%\dlib_face_recognition_resnet_model_v1.dat.bz2"
     echo Extracting face recognition model...
-    python -c "import bz2; open('%MODELS_DIR%\dlib_face_recognition_resnet_model_v1.dat', 'wb').write(bz2.open('%MODELS_DIR%\dlib_face_recognition_resnet_model_v1.dat.bz2').read())"
+    python -c "import bz2; open(r'%MODELS_DIR%\dlib_face_recognition_resnet_model_v1.dat', 'wb').write(bz2.open(r'%MODELS_DIR%\dlib_face_recognition_resnet_model_v1.dat.bz2').read())"
     del "%MODELS_DIR%\dlib_face_recognition_resnet_model_v1.dat.bz2"
 )
+
 
 :: Create requirements.txt if it doesn't exist
 if not exist "%PROJECT_DIR%requirements.txt" (
@@ -146,7 +147,7 @@ echo Creating run script...
 ) > "%PROJECT_DIR%run.bat"
 
 echo.
-echo Setup complete! You can now run the program using run.bat
+echo Setup complete. Please run the program using run.bat
 echo.
 pause
 
