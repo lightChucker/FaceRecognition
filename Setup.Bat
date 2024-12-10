@@ -94,7 +94,7 @@ if errorlevel 1 (
     echo All packages installed successfully!
 )
 
-:: Create the improved run.bat
+:: Create the run.bat
 echo Creating run script...
 (
     echo @echo off
