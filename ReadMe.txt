@@ -8,9 +8,10 @@ Run run.bat
 
 Choose webcam (not tested) or video.
 
-If multiple videos are present it will ask you which video to select. (if video shows in the wrong aspect ratio click the x at the top right of video window to reload). 
+Choose video file. (if  the video is the wrong aspect ratio close video window to reload). 
 
-Press p to pause
+Press p to pause.
+
 Press r to rename ID, then type in ID # followed by the new name. Then enter q, click on the video and press p to resume. 
+
 Press q to quit. 
- 
